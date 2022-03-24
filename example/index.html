@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting Started</title>
+  </head>
+  <body>
+    <div id="iframe-container"></div>
+    <script src="../dist/bucksapp.dev.js"></script>
+    <script>
+      window.onload = (event) => {
+          Bucksapp.initializeIframe(
+              'iframe-container',
+              'YOUR_TOKEN',
+              { "language": 'en' } //options
+          );
+      };
+      </script>
+  </body>
+</html>

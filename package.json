@@ -1,19 +1,23 @@
 {
-  "name": "web-bucksapp-sdk",
-  "version": "1.0.0",
+  "name": "@bucksapp/web-bucksapp-sdk",
+  "version": "0.0.1",
   "description": "Bucksapp web SDK",
-  "private": true,
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Guillermo Macchi <guillermo@bucksapp.co>",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
+    "esbuild-loader": "^2.18.0",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "web-bucksapp-sdk": "^0.0.1"
   }
 }

@@ -1,11 +1,7 @@
-import _ from 'lodash';
+import Bucksapp from './bucksapp';
 
-function component() {
-    const element = document.createElement('div');
-  
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  
-    return element;
+((function bucksapp(window) {
+  if (typeof (window.Bucksapp) === 'undefined') {
+    window.Bucksapp = new Bucksapp();
   }
-  
-  document.body.appendChild(component());
+})(window));

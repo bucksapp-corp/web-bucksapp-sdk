@@ -20,4 +20,3 @@
 .cache
 .eslintcache
 package-lock.json
-/dist

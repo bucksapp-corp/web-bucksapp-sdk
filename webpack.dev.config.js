@@ -3,9 +3,9 @@ const path = require("path");
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   output: {
-    filename: `bucksapp.js`,
+    filename: `bucksapp.dev.js`,
     path: path.resolve(__dirname, "dist"),
   },
   optimization: {
@@ -17,8 +17,8 @@ module.exports = {
   },
   plugins: [
     new Webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production"),
-      "process.env.HOST": JSON.stringify("https://app.prod.bucksapp.com/"),
+      "process.env.NODE_ENV": JSON.stringify("development"),
+      "process.env.HOST": JSON.stringify("https://app.dev.bucksapp.com/"),
     }),
   ],
 };
