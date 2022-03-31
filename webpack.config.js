@@ -19,6 +19,7 @@ module.exports = {
     new Webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production"),
       "process.env.HOST": JSON.stringify("https://app.prod.bucksapp.com/"),
+      "process.env.API_HOST": JSON.stringify("https://api.prod.bucksapp.com/"),
     }),
   ],
 };

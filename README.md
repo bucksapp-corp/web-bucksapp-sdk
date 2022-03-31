@@ -46,7 +46,8 @@ Development enviroment
 window.onload = (event) => {
     Bucksapp.initializeIframe(
         'iframe-container',
-        'YOUR_TOKEN',
+        'API_KEY',
+        'uuid',
         { "language": 'en' } //options
     );
 };
