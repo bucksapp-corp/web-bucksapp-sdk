@@ -48,23 +48,25 @@ class Bucksapp {
     // xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4 && this.status === 200) {
-        const response = JSON.parse(this.responseText);
-        const token = response?.token;
-        if (token) {
-          const iframe = window.document.createElement("iframe");
-          iframe.src = HOST + language + "?token=" + token;
-          iframe.style.width = "100%";
-          iframe.style.borderWidth = "0px";
-          iframe.style.height = `${iframeContainer.offsetHeight}px`;
-          iframe.style.minHeight = `${iframeContainer.offsetHeight}px`;
-          iframeContainer.innerHTML = "";
-          iframeContainer.appendChild(iframe);
-        }else{
-          throw "Invalid user";
+      if (this.readyState === 4) {
+        if (this.status === 200) {
+          const response = JSON.parse(this.responseText);
+          const token = response?.token;
+          if (token) {
+            const iframe = window.document.createElement("iframe");
+            iframe.src = HOST + language + "?token=" + token;
+            iframe.style.width = "100%";
+            iframe.style.borderWidth = "0px";
+            iframe.style.height = `${iframeContainer.offsetHeight}px`;
+            iframe.style.minHeight = `${iframeContainer.offsetHeight}px`;
+            iframeContainer.innerHTML = "";
+            iframeContainer.appendChild(iframe);
+          } else {
+            throw "Invalid user";
+          }
+        } else {
+          throw `${this.status} - ${this.responseText}`;
         }
-      }else{
-        throw `${this.status} - ${this.responseText}`
       }
     });
 
