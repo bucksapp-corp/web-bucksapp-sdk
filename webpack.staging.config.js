@@ -10,8 +10,8 @@ module.exports = {
   plugins: [
     new Webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("staging"),
-      "process.env.HOST": JSON.stringify("https://app.staging.bucksapp.com/"),
-      "process.env.API_HOST": JSON.stringify("https://api.staging.bucksapp.com/"),
+      "process.env.HOST": JSON.stringify("https://app.stg.bucksapp.com/"),
+      "process.env.API_HOST": JSON.stringify("https://api.stg.bucksapp.com/"),
     }),
   ],
 };
