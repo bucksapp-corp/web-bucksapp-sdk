@@ -16,23 +16,11 @@ npm i @bucksapp/web-bucksapp-sdk
 
 ### Importing the library
 
-Production enviroment
 
 ```
 <script src=".../dist/bucksapp.js"></script>
 ```
 
-Staging enviroment
-
-```
-<script src=".../dist/bucksapp.staging.js"></script>
-```
-
-Development enviroment
-
-```
-<script src=".../dist/bucksapp.dev.js"></script>
-```
 
 ### Initialize
 
@@ -48,6 +36,7 @@ window.onload = (event) => {
         'iframe-container',
         'API_KEY',
         'uuid',
+        'environment'
         { "language": 'en' } //options
     );
 };
