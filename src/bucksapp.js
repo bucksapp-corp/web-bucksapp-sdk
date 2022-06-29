@@ -1,13 +1,9 @@
 import _ from "lodash";
-import constants from "./constants";
-
-const HOST = constants.HOST;
-const ENV = constants.ENV;
-const API_HOST = constants.API_HOST;
-const LANGUAGES = constants.LANGUAGES;
+import { LANGUAGES, ENVIRONMENTS } from "./constants";
 
 class Bucksapp {
-  initializeIframe = (divId, apiKey, uuid, options) => {
+  initializeIframe = (divId, apiKey, uuid, environment, options) => {
+    // Validaciones
     let language = "es/";
     if (typeof divId !== "string" || divId === "") {
       throw "Invalid div id";
@@ -18,6 +14,14 @@ class Bucksapp {
     if (typeof uuid !== "string" || uuid === "") {
       throw "Invalid uuid";
     }
+    if (
+      typeof environment !== "string" ||
+      environment === "" ||
+      !ENVIRONMENTS.includes(environment)
+    ) {
+      throw "Invalid environment";
+    }
+
     const iframeContainer = window.document.getElementById(divId);
 
     if (!iframeContainer) {
@@ -40,12 +44,35 @@ class Bucksapp {
       }
     }
 
+    //Setup de entorno
+    let api_host = "";
+    let app_host = "";
+    switch (environment) {
+      case "development":
+        api_host = "https://api.dev.bucksapp.com/";
+        app_host = "https://app.dev.bucksapp.com/";
+        break;
+      case "staging":
+        api_host = "https://api.stg.bucksapp.com/";
+        app_host = "https://app.stg.bucksapp.com/";
+        break;
+      case "sandbox":
+        api_host = "https://api.sbx.bucksapp.com/";
+        app_host = "https://app.sbx.bucksapp.com/";
+        break;
+      case "production":
+        api_host = "https://api.bucksapp.com/";
+        app_host = "https://app.bucksapp.com/";
+        break;
+      default:
+        break;
+    }
+
     var data = JSON.stringify({
       user: uuid,
     });
 
     var xhr = new XMLHttpRequest();
-    // xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
@@ -54,7 +81,7 @@ class Bucksapp {
           const token = response?.token;
           if (token) {
             const iframe = window.document.createElement("iframe");
-            iframe.src = HOST + language + "?token=" + token;
+            iframe.src = app_host + language + "?token=" + token;
             iframe.style.width = "100%";
             iframe.style.borderWidth = "0px";
             iframe.style.height = `${iframeContainer.offsetHeight}px`;
@@ -70,8 +97,8 @@ class Bucksapp {
       }
     });
 
-    xhr.open("POST", `${API_HOST}/api/fi/v1/authenticate`);
-    xhr.setRequestHeader("JWT_AUD", ENV);
+    xhr.open("POST", `${api_host}/api/fi/v1/authenticate`);
+    xhr.setRequestHeader("JWT_AUD", environment);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("X-API-KEY", apiKey);
 
