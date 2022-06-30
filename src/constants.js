@@ -1,4 +1,2 @@
-export default {
-  ENVIRONMENTS: ["development", "staging", "sandbox", "production"],
-  LANGUAGES: ["es", "en"],
-};
+export const ENVIRONMENTS = ["development", "staging", "sandbox", "production"];
+export const LANGUAGES = ["es", "en"];

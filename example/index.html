@@ -6,13 +6,14 @@
   </head>
   <body>
     <div id="iframe-container" style="width: 100%; height: 500px"></div>
-    <script src="../dist/bucksapp.dev.js"></script>
+    <script src="../dist/bucksapp.js"></script>
     <script>
       window.onload = (event) => {
           Bucksapp.initializeIframe(
               'iframe-container', // container id
               'API_KEY',
-              'USER_UUID',
+              'UUID',
+              'environment',
               { "language": 'en' } //options
           );
       };
