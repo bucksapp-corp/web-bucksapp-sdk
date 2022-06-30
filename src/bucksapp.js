@@ -17,7 +17,7 @@ class Bucksapp {
     if (
       typeof environment !== "string" ||
       environment === "" ||
-      !ENVIRONMENTS.includes(environment)
+      !ENVIRONMENTS.includes(environment) //TODO: Esto esta fallando al compilar, ver por qué?
     ) {
       throw "Invalid environment";
     }
