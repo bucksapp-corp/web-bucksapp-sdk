@@ -61,8 +61,8 @@ class Bucksapp {
         app_host = "https://app.sbx.bucksapp.com/";
         break;
       case "production":
-        api_host = "https://api.bucksapp.com/";
-        app_host = "https://app.bucksapp.com/";
+        api_host = "https://api.basa.bucksapp.com/";
+        app_host = "https://app.basa.bucksapp.com/";
         break;
       default:
         break;

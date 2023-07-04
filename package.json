@@ -1,7 +1,7 @@
 {
   "name": "@bucksapp/web-bucksapp-sdk",
-  "version": "0.0.7",
-  "description": "Bucksapp web SDK",
+  "version": "1.0.0-basa",
+  "description": "Bucksapp web SDK for basa",
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
